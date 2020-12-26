@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/Bush.png" type="Texture" id=1]
+
+[node name="Bush" type="StaticBody2D"]
+
+[node name="BushCollisionShape" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.0424304, 0.153802 )
+scale = Vector2( 1.46456, 1.46669 )
+polygon = PoolVector2Array( -9.77956, -1.35702, -8.12884, 0.936292, -9.70779, 3.6596, -7.84176, 4.44792, -7.33937, 7.31456, -4.03794, 6.09624, -1.88483, 9.03455, -0.664742, 7.4579, 2.34961, 9.24954, 3.49794, 9.17788, 4.0721, 7.09957, 6.00989, 7.0279, 8.09123, 7.74456, 8.01945, 5.73791, 7.15821, 4.66292, 9.74194, 4.30459, 10.2443, 3.6596, 8.16299, 0.864626, 9.81372, -0.0670314, 8.95247, -1.78701, 8.80893, -3.93699, -8.05707, -3.79366 )
+
+[node name="BushSprite" type="Sprite" parent="."]
+position = Vector2( 0.229729, -0.0949984 )
+texture = ExtResource( 1 )

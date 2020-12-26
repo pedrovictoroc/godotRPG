@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
-const MAX_SPEED = 60*1.6
-const ACCELERATION = 10
-const FRICTION = 400
+const MAX_SPEED = 80
+const ACCELERATION = 20
+const FRICTION = 140
 
 var velocity = Vector2.ZERO
+
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
 
 func getDiferenceInXAxis():
 	if(Input.is_key_pressed(KEY_D)):
@@ -31,10 +34,12 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	
 	if (input_vector != Vector2.ZERO):
-		velocity += input_vector*ACCELERATION*delta
-		#velocity = input_vector*MAX_SPEED
-		velocity = velocity.clamped(MAX_SPEED*delta)
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationState.travel("Run")
+		velocity = velocity.move_toward(input_vector*MAX_SPEED, ACCELERATION)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		animationState.travel("Idle")
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 		
-	move_and_collide(velocity)
+	velocity = move_and_slide(velocity)
