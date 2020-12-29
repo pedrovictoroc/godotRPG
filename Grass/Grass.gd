@@ -9,8 +9,9 @@ func _process(delta):
 		var grassEffect = GrassEffect.instance()
 		#Get root scene
 		var mainScene = get_tree().current_scene
-		
+		#Set instance
 		mainScene.add_child(grassEffect)
+		#Set position of instance
 		grassEffect.global_position = global_position
 		
 		queue_free()
