@@ -37,7 +37,7 @@ func getDiferenceInYAxis():
 	else:
 		return 	Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	
-func _physics_process(delta):
+func _process(delta):
 	match state:
 		MOVE:
 			move_state()
