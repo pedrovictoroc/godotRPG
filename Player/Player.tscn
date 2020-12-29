@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.png" type="Texture" id=2]
 [ext_resource path="res://Player/python.png" type="Texture" id=3]
+[ext_resource path="res://Hitboxes/Hitbox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.7742
@@ -37,6 +38,30 @@ tracks/1/keys = {
 "method": "attack_animation_finished"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=25]
 resource_name = "AttackLeft"
@@ -66,6 +91,30 @@ tracks/1/keys = {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -97,6 +146,30 @@ tracks/1/keys = {
 "method": "attack_animation_finished"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="Animation" id=27]
 resource_name = "AttackUp"
@@ -126,6 +199,30 @@ tracks/1/keys = {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 270.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -356,8 +453,13 @@ graph_offset = Vector2( 0, 81.0785 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
+[sub_resource type="CapsuleShape2D" id=35]
+height = 12.0
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -3.29723, -8.76922 )
+collision_layer = 2
+collision_mask = 2147483649
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -368,7 +470,7 @@ position = Vector2( 4.20923, -1.12246 )
 scale = Vector2( 1.13154, 1.03508 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 39
+frame = 24
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 __meta__ = {
@@ -405,3 +507,20 @@ parameters/playback = SubResource( 23 )
 parameters/Attack/blend_position = Vector2( 0.378378, 0.55 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
+
+[node name="HitboxPivot" type="Position2D" parent="."]
+position = Vector2( 3.48033, 3.58527 )
+__meta__ = {
+"_gizmo_extents_": 8.0
+}
+
+[node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource( 4 )]
+position = Vector2( 18.4728, -3.58527 )
+collision_mask = 2147483656
+
+[node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
+position = Vector2( 1.68369, 3.58527 )
+shape = SubResource( 35 )
+disabled = true
+
+[editable path="HitboxPivot/SwordHitbox"]

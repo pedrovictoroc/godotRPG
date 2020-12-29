@@ -528,6 +528,7 @@ tile_data = PoolIntArray( 65540, 0, 4, 65541, 0, 196609, 65542, 0, 196609, 65543
 [node name="DirtCliffTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 32, 32 )
+collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -65529, 0, 0, -65528, 0, 1, -65527, 0, 2, 7, 0, 131072, 8, 0, 131073, 9, 0, 131074, 65539, 0, 196608, 65540, 0, 8, 65541, 0, 196610, 131076, 0, 131075, 262152, 0, 0, 262153, 0, 1, 262154, 0, 2, 327680, 0, 0, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 2, 327688, 0, 65536, 327689, 0, 65537, 327690, 0, 65538, 393216, 0, 131072, 393217, 0, 131073, 393218, 0, 131073, 393219, 0, 131073, 393220, 0, 131073, 393221, 0, 131074, 393224, 0, 131072, 393225, 0, 131073, 393226, 0, 131074 )
 
@@ -549,6 +550,12 @@ position = Vector2( 47.5, 122.23 )
 
 [node name="Grasses" type="YSort" parent="YSort"]
 
+[node name="Grass7" parent="YSort/Grasses" instance=ExtResource( 6 )]
+position = Vector2( 134.582, 134.807 )
+
+[node name="Grass5" parent="YSort/Grasses" instance=ExtResource( 6 )]
+position = Vector2( 94.9677, 131.594 )
+
 [node name="Grass" parent="YSort/Grasses" instance=ExtResource( 6 )]
 position = Vector2( 77.9176, 131.594 )
 
@@ -560,3 +567,6 @@ position = Vector2( 172.5, 111.077 )
 
 [node name="Grass4" parent="YSort/Grasses" instance=ExtResource( 6 )]
 position = Vector2( 231.424, 146.277 )
+
+[node name="Grass6" parent="YSort/Grasses" instance=ExtResource( 6 )]
+position = Vector2( 86.0555, 131.594 )
